@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <!-- wrap_content는 내용물을 표시하기 위한 최소 너비, 최소 높이를 지정 -->
+
+    <CheckBox
+        android:id="@+id/cb_banana"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:onClick="onClick"
+        android:text="바나나"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_pineapple"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onClick"
+        android:text="파인애플"
+        app:layout_constraintEnd_toEndOf="@+id/cb_banana"
+        app:layout_constraintStart_toStartOf="@+id/cb_banana"
+        app:layout_constraintTop_toBottomOf="@+id/cb_banana" />
+
+    <CheckBox
+        android:id="@+id/cb_chocochip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onClick"
+        android:text="초코칩"
+        app:layout_constraintEnd_toEndOf="@+id/cb_pineapple"
+        app:layout_constraintStart_toStartOf="@+id/cb_pineapple"
+        app:layout_constraintTop_toBottomOf="@+id/cb_pineapple" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        app:layout_constraintEnd_toEndOf="@+id/cb_chocochip"
+        app:layout_constraintStart_toStartOf="@+id/cb_chocochip"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_vanilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="onClick"
+            android:text="바닐라" />
+        <!-- checked attribute를 true로 만들어서 처음 실행 시 선택되어있게 -->
+
+        <RadioButton
+            android:id="@+id/rb_choco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="초코" />
+
+        <RadioButton
+            android:id="@+id/rb_yogurt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="요거트" />
+    </RadioGroup>
+    <!-- RadioGroup으로 RadioButton들을 묶으면, 하나를 선택한 후 다른 것을 선택하면 이전 것을 선택해제함 -->
+
+    <TextView
+        android:id="@+id/tv_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="1000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb_calories"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="5000"
+        android:progress="1000"
+        app:layout_constraintBottom_toTopOf="@+id/tv_calories"
+        app:layout_constraintEnd_toEndOf="@+id/et_syrup"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/et_syrup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.862" />
+    <!-- 제일 처음에는 바닐라 베이스만 선택되어있기 때문에 ProgressBar의 progress값도 바닐라의 칼로리인 1000으로 설정 -->
+
+    <EditText
+        android:id="@+id/et_syrup"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/bt_order"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:onClick="bt_order_onClick"
+        android:text="주문"
+        app:layout_constraintEnd_toEndOf="@+id/pb_calories"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pb_calories"
+        app:layout_constraintTop_toBottomOf="@+id/tv_calories" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
